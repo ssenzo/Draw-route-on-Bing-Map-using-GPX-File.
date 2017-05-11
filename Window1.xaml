@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+	x:Class="BingMap02.Window1" 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+	Title="GPX 파일 뷰어"
+	WindowStartupLocation="CenterScreen"
+	WindowState="Maximized"
+	Width="809"
+	Height="463"
+	x:Name="window1"
+	Loaded="window1_Loaded">
+	<DockPanel>
+		<DockPanel
+			MaxWidth="250"
+			MinWidth="250">
+			<DockPanel
+				DockPanel.Dock="Top">
+				<GroupBox
+					Header="지도유형"
+					Margin="5">
+					<WrapPanel
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						Margin="2">
+						<RadioButton
+							x:Name="rdRoad"
+							Content="도로"
+							Width="60"
+							IsChecked="true"
+							Margin="5"
+							Checked="rdRoad_Checked" />
+						<RadioButton
+							x:Name="rdSattelite"
+							Content="위성"
+							Width="60"
+							Margin="5"
+							Checked="rdSattelite_Checked" />
+					</WrapPanel>
+				</GroupBox>
+			</DockPanel>
+            <DockPanel
+				DockPanel.Dock="Top">
+                <WrapPanel>
+                    <TextBox x:Name="txtLocationToSearch" Width="180" Margin="5,0,0,0" KeyDown="txtLocationToSearch_KeyDown">
+                    </TextBox>
+                    <Button
+						x:Name="btnTest"
+						Content="검색"
+						Width="60"
+                        Margin="0,0,5,0"
+						Click="btnTest_Click" />
+                </WrapPanel>
+            </DockPanel>
+            <DockPanel
+				DockPanel.Dock="Top"
+				RenderTransformOrigin="0.5,0.5">
+				<WrapPanel>
+					<Button
+						x:Name="btnSelectDir"
+						Content="폴더선택"
+						Height="25"
+						Width="70"
+						Margin="5"
+						Click="btnSelectDir_Click" />
+					<Label
+						x:Name="lblFolder"
+						Content="Select Folder"
+						Height="30"
+						Width="139"
+						Margin="0,0,0,0" />
+				</WrapPanel>
+			</DockPanel>
+			
+			<DockPanel
+				DockPanel.Dock="Top">
+				<DataGrid
+					x:Name="dgFileList"
+					AutoGenerateColumns="False"
+					SelectionChanged="dgFileList_SelectionChanged"
+					Margin="5">
+					<DataGrid.Columns>
+						<DataGridTextColumn
+							Header="Name"
+							Width="240"
+							Binding="{Binding Path=Name}" />
+					</DataGrid.Columns>
+				</DataGrid>
+			</DockPanel>
+		</DockPanel>
+		<DockPanel>
+			<m:Map
+				x:Name="myMap"
+				CredentialsProvider="AjidenPWkoOfH5pFY4nYxyNfYS-21JZrUOh7xvIRfIRaPLS3xVgiBbzL0qaTkE3P"
+				MouseMove="myMap_MouseMove" />
+		</DockPanel>
+	</DockPanel>
+</Window>
